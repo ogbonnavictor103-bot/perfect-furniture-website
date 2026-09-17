@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Perfect Furniture & Dominion Showroom — premium custom furniture in Asaba, Delta State.">
+<title>Perfect Furniture & Dominion Showroom</title>
+<style>
+:root{--gold:#d4af37;--dark:#090909;--dark2:#151515;--white:#fff;--muted:#c9c9c9}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--dark);color:var(--white);line-height:1.6}
+a{text-decoration:none;color:inherit}
+nav{position:fixed;top:0;width:100%;z-index:20;background:rgba(9,9,9,.94);border-bottom:1px solid rgba(212,175,55,.35);backdrop-filter:blur(8px)}
+.navin{max-width:1150px;margin:auto;padding:15px 20px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-weight:800;letter-spacing:1px}.logo span{color:var(--gold)}
+.navlinks{display:flex;gap:24px;font-size:14px}.navlinks a:hover{color:var(--gold)}
+.menu{display:none;background:none;border:1px solid var(--gold);color:white;padding:6px 10px}
+.hero{min-height:92vh;padding:150px 20px 80px;display:flex;align-items:center;background:linear-gradient(180deg,rgba(9,9,9,.55) 0%,rgba(9,9,9,.75) 55%,rgba(9,9,9,.96) 100%),url('images/hero-showroom.jpg');background-size:cover;background-position:center 20%;background-repeat:no-repeat;position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;width:480px;height:480px;border:1px solid rgba(212,175,55,.18);border-radius:50%;right:-150px;top:130px;pointer-events:none}
+.wrap{max-width:1150px;margin:auto;width:100%}
+.eyebrow{color:var(--gold);text-transform:uppercase;letter-spacing:4px;font-size:13px;font-weight:bold}
+h1{font-size:clamp(42px,7vw,82px);line-height:1.02;margin:18px 0}.gold{color:var(--gold)}
+.hero p{max-width:650px;color:var(--muted);font-size:18px}
+.btns{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+.btn{padding:13px 21px;border-radius:4px;font-weight:bold;border:1px solid var(--gold);display:inline-block}
+.btn.goldbtn{background:var(--gold);color:#090909}.btn:hover{transform:translateY(-2px)}
+section{padding:85px 20px}.sectionhead{text-align:center;margin-bottom:42px}.sectionhead h2{font-size:38px;margin:8px 0}.sectionhead p{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:var(--dark2);border:1px solid #292929;padding:28px;border-radius:8px;transition:.25s}
+.card:hover{border-color:var(--gold);transform:translateY(-4px)}
+.icon{font-size:34px;margin-bottom:12px}.card h3{margin-bottom:8px;color:var(--gold)}.card p{color:var(--muted)}
+.price{display:inline-block;margin-top:12px;font-weight:bold;color:var(--white);background:rgba(212,175,55,.14);border:1px solid rgba(212,175,55,.4);padding:5px 12px;border-radius:20px;font-size:14px}
+.card-wa{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:16px;background:#25d366;color:#fff;padding:10px 14px;border-radius:6px;font-weight:bold;font-size:14px}
+.card-wa:hover{filter:brightness(1.08)}
+.nationwide{text-align:center;margin-top:34px;padding:16px;border:1px dashed rgba(212,175,55,.45);border-radius:8px;background:rgba(212,175,55,.06)}
+.nationwide strong{color:var(--gold);display:block;font-size:17px;margin-bottom:4px}
+.nationwide span{color:var(--muted);font-size:13px}
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.pic{min-height:190px;border-radius:7px;background:linear-gradient(135deg,#2b2b2b,#111);border:1px solid #333;display:flex;align-items:end;padding:15px;font-weight:bold;color:#fff;background-size:cover;background-position:center;position:relative}
+.pic span{background:rgba(0,0,0,.65);padding:6px 9px;border-left:2px solid var(--gold)}
+.pic a.vidlink{position:absolute;top:10px;right:10px;background:#25d366;color:#fff;font-size:11px;padding:4px 8px;border-radius:4px;font-weight:bold}
+.about{background:#101010}.aboutgrid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}.aboutbox{border:1px solid rgba(212,175,55,.35);padding:35px;background:linear-gradient(145deg,#191919,#0b0b0b)}
+.contact{background:linear-gradient(180deg,#0a0a0a,#17130a)}.contactgrid{display:grid;grid-template-columns:1fr 1fr;gap:25px}.contactitem{padding:22px;border:1px solid #333;background:#111}.contactitem strong{display:block;color:var(--gold);margin-bottom:5px}
+footer{padding:30px 20px;text-align:center;border-top:1px solid #282828;color:#aaa;font-size:14px}
+.float{position:fixed;right:18px;bottom:18px;z-index:30;background:#25d366;color:#fff;padding:13px 18px;border-radius:50px;font-weight:bold;box-shadow:0 8px 30px #000}
+@media(max-width:800px){.navlinks{display:none;position:absolute;top:60px;left:0;right:0;background:#090909;padding:20px;flex-direction:column}.navlinks.open{display:flex}.menu{display:block}.grid{grid-template-columns:1fr 1fr}.gallery{grid-template-columns:1fr 1fr}.aboutgrid,.contactgrid{grid-template-columns:1fr}}
+@media(max-width:520px){.grid,.gallery{grid-template-columns:1fr}section{padding:65px 16px}.hero{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<nav><div class="navin">
+<div class="logo">PERFECT <span>FURNITURE</span></div>
+<button class="menu" onclick="document.querySelector('.navlinks').classList.toggle('open')">MENU</button>
+<div class="navlinks">
+<a href="#home">Home</a><a href="#products">Products</a><a href="#about">About</a><a href="#gallery">Gallery</a><a href="#contact">Contact</a>
+</div></div></nav>
+
+<header class="hero" id="home" style="background-image:linear-gradient(180deg,rgba(9,9,9,.55) 0%,rgba(9,9,9,.75) 55%,rgba(9,9,9,.96) 100%),url('images/hero-showroom.jpg')"><div class="wrap">
+<div class="eyebrow">Luxury • Craftsmanship • Comfort</div>
+<h1>Furniture made to<br><span class="gold">perfect your space.</span></h1>
+<p>Welcome to Perfect Furniture & Dominion Showroom — premium custom furniture crafted with attention to detail for homes, offices and modern interiors in Asaba, Delta State.</p>
+<div class="btns">
+<a class="btn goldbtn" href="#products">Explore Our Furniture</a>
+<a class="btn" href="https://wa.me/2348039785887?text=Hello%20Perfect%20Furniture%20%26%20Dominion%20Showroom%2C%20I%27d%20like%20to%20make%20an%20enquiry." target="_blank">Chat on WhatsApp</a>
+</div></div></header>
+
+<section id="products"><div class="wrap">
+<div class="sectionhead"><div class="eyebrow">What we produce</div><h2>Our Furniture Collection</h2><p>Designed, built and finished with a premium showroom touch.</p></div>
+<div class="grid">
+<div class="card"><div class="icon">🛋️</div><h3>Sofa Sets</h3><p>Custom 1, 2, 3 and multiple-seater sofas in luxurious fabrics and leather.</p><div class="price">Contact for Price</div><a class="card-wa" href="https://wa.me/2348039785887?text=Hello%20Perfect%20Furniture%2C%20I%27m%20interested%20in%20Sofa%20Sets.%20Please%20send%20me%20details%20and%20price." target="_blank">💬 Chat about Sofa Sets</a></div>
+<div class="card"><div class="icon">🛏️</div><h3>Beds & Bedroom</h3><p>Modern beds, wardrobes, dressing tables and mirrors for stylish bedrooms.</p><div class="price">Contact for Price</div><a class="card-wa" href="https://wa.me/2348039785887?text=Hello%20Perfect%20Furniture%2C%20I%27m%20interested%20in%20Beds%20%26%20Bedroom%20furniture.%20Please%20send%20me%20details%20and%20price." target="_blank">💬 Chat about Beds & Bedroom</a></div>
+<div class="card"><div class="icon">📺</div><h3>TV Consoles</h3><p>Contemporary TV units, feature walls, shelves and entertainment consoles.</p><div class="price">Contact for Price</div><a class="card-wa" href="https://wa.me/2348039785887?text=Hello%20Perfect%20Furniture%2C%20I%27m%20interested%20in%20TV%20Consoles.%20Please%20send%20me%20details%20and%20price." target="_blank">💬 Chat about TV Consoles</a></div>
+<div class="card"><div class="icon">🍽️</div><h3>Dining Sets</h3><p>Beautiful 4-seater and 6-seater dining sets made to your preferred design.</p><div class="price">Contact for Price</div><a class="card-wa" href="https://wa.me/2348039785887?text=Hello%20Perfect%20Furniture%2C%20I%27m%20interested%20in%20Dining%20Sets.%20Please%20send%20me%20details%20and%20price." target="_blank">💬 Chat about Dining Sets</a></div>
+<div class="card"><div class="icon">💼</div><h3>Office Furniture</h3><p>Executive office tables, chairs, storage and practical workspace solutions.</p><div class="price">Contact for Price</div><a class="card-wa" href="https://wa.me/2348039785887?text=Hello%20Perfect%20Furniture%2C%20I%27m%20interested%20in%20Office%20Furniture.%20Please%20send%20me%20details%20and%20price." target="_blank">💬 Chat about Office Furniture</a></div>
+<div class="card"><div class="icon">🏠</div><h3>Kitchen & Storage</h3><p>Kitchen cabinets, shoe racks, center tables, shelves and custom storage.</p><div class="price">Contact for Price</div><a class="card-wa" href="https://wa.me/2348039785887?text=Hello%20Perfect%20Furniture%2C%20I%27m%20interested%20in%20Kitchen%20%26%20Storage%20furniture.%20Please%20send%20me%20details%20and%20price." target="_blank">💬 Chat about Kitchen & Storage</a></div>
+</div>
+<div class="nationwide"><strong>🚚 We Deliver Nationwide</strong><span>*Terms and conditions apply</span></div>
+</div></section>
+
+<section class="about" id="about"><div class="wrap aboutgrid">
+<div><div class="eyebrow">About us</div><h2 style="font-size:42px;margin:10px 0 20px">Built for your vision.<br><span class="gold">Finished with excellence.</span></h2>
+<p style="color:var(--muted);font-size:17px">Perfect Furniture & Dominion Showroom creates distinctive furniture pieces for customers who want quality, beauty and functionality. From a single custom piece to complete interior furniture, we turn ideas into finished products.</p></div>
+<div class="aboutbox"><h3 style="color:var(--gold);font-size:24px">Why choose custom?</h3><p style="color:var(--muted);margin-top:12px">Choose your dimensions, materials, colours and design details. We build around your space and your taste.</p></div>
+</div></section>
+
+<section id="gallery"><div class="wrap">
+<div class="sectionhead"><div class="eyebrow">Showroom gallery</div><h2>Featured Designs</h2><p>Your real project photos can be placed here.</p></div>
+<div class="gallery" id="galleryGrid">
+<div class="pic"><span>Luxury Sofa</span></div><div class="pic"><span>Modern Bedroom</span></div><div class="pic"><span>TV Console</span></div><div class="pic"><span>Dining Set</span></div>
+<div class="pic"><span>Executive Office</span></div><div class="pic"><span>Kitchen Cabinet</span></div><div class="pic"><span>Wardrobe</span></div><div class="pic"><span>Custom Furniture</span></div>
+</div></div></section>
+
+<section class="contact" id="contact"><div class="wrap">
+<div class="sectionhead"><div class="eyebrow">Let's build</div><h2>Contact Perfect Furniture</h2><p>Tell us what you want to create and we'll discuss the design with you.</p></div>
+<div class="contactgrid">
+<div class="contactitem"><strong>📍 Showroom</strong>36DDPA Housing Estate, Okwe, Asaba, Delta State</div>
+<div class="contactitem"><strong>📞 Call / WhatsApp</strong>08039785887 · 08126008233</div>
+<div class="contactitem"><strong>✉️ Email</strong>faithogbonna499@gmail.com</div>
+<div class="contactitem"><strong>💬 Quick enquiry</strong><a class="gold" href="https://wa.me/2348039785887?text=Hello%20Perfect%20Furniture%20%26%20Dominion%20Showroom" target="_blank">Start a WhatsApp conversation →</a></div>
+</div></div></section>
+
+<footer>© 2026 Perfect Furniture & Dominion Showroom. All rights reserved.</footer>
+<a class="float" href="https://wa.me/2348039785887?text=Hello%20Perfect%20Furniture%20%26%20Dominion%20Showroom" target="_blank">WhatsApp</a>
+
+<script>
+// Loads homepage background photo from content/hero.json (edited via /admin panel)
+fetch('content/hero.json?_=' + Date.now())
+  .then(r => r.json())
+  .then(data => {
+    if (data.image) {
+      document.getElementById('home').style.backgroundImage =
+        "linear-gradient(180deg,rgba(9,9,9,.55) 0%,rgba(9,9,9,.75) 55%,rgba(9,9,9,.96) 100%), url('" + data.image + "')";
+    }
+  })
+  .catch(() => {});
+
+// Loads gallery photos from content/gallery.json (edited via /admin panel)
+fetch('content/gallery.json?_=' + Date.now())
+  .then(r => r.json())
+  .then(data => {
+    var items = (data && data.items) || [];
+    if (!items.length) return;
+    var grid = document.getElementById('galleryGrid');
+    grid.innerHTML = '';
+    items.forEach(function(item){
+      var div = document.createElement('div');
+      div.className = 'pic';
+      if (item.image) { div.style.backgroundImage = "url('" + item.image + "')"; }
+      var span = document.createElement('span');
+      span.textContent = item.caption || 'Custom Furniture';
+      div.appendChild(span);
+      if (item.video_link) {
+        var a = document.createElement('a');
+        a.className = 'vidlink';
+        a.href = item.video_link;
+        a.target = '_blank';
+        a.textContent = '▶ Video';
+        div.appendChild(a);
+      }
+      grid.appendChild(div);
+    });
+  })
+  .catch(() => {});
+</script>
+</body></html>
