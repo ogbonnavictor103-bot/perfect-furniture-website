@@ -1,0 +1,32 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "hero"
+    label: "Homepage Background"
+    files:
+      - file: "content/hero.json"
+        label: "Homepage Background Photo"
+        name: "hero"
+        fields:
+          - {label: "Background Photo", name: "image", widget: "image", required: false}
+
+  - name: "gallery"
+    label: "Gallery Photos"
+    files:
+      - file: "content/gallery.json"
+        label: "Gallery"
+        name: "gallery"
+        fields:
+          - label: "Photos"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.caption}}"
+            fields:
+              - {label: "Photo", name: "image", widget: "image", required: false}
+              - {label: "Caption", name: "caption", widget: "string", default: "Custom Furniture"}
+              - {label: "WhatsApp Video/Photo Link (optional)", name: "video_link", widget: "string", required: false, hint: "Paste a YouTube or Facebook video link here if you want a video instead of a photo for this slot."}
