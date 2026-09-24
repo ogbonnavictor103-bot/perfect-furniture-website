@@ -1,16 +1,70 @@
 {
   "items": [
-    { "image": "/images/uploads/gallery-brown-leather-sofa.jpg", "caption": "Brown Leather Sofa Set", "video_link": "" },
-    { "image": "/images/uploads/gallery-bw-tv-console.jpg", "caption": "Black & White TV Console", "video_link": "" },
-    { "image": "/images/uploads/gallery-grey-kitchen.jpg", "caption": "Grey Kitchen Cabinet", "video_link": "" },
-    { "image": "/images/uploads/gallery-mirror-wardrobe.jpg", "caption": "Lighted Mirror Wardrobe", "video_link": "" },
-    { "image": "/images/uploads/gallery-office-desk.jpg", "caption": "Executive Office Desk", "video_link": "" },
-    { "image": "/images/uploads/gallery-yellow-kitchen.jpg", "caption": "Yellow Kitchen Cabinet", "video_link": "" },
-    { "image": "/images/uploads/gallery-green-sofa.jpg", "caption": "Emerald Tufted Sofa Set", "video_link": "" },
-    { "image": "/images/uploads/gallery-grey-sofa-gold-legs.jpg", "caption": "Grey Sofa Set, Gold Legs", "video_link": "" },
-    { "image": "/images/uploads/gallery-white-marble-tv-console.jpg", "caption": "White Marble-Look TV Console", "video_link": "" },
-    { "image": "/images/uploads/gallery-beige-tv-console.jpg", "caption": "Beige TV Console", "video_link": "" },
-    { "image": "/images/uploads/gallery-red-mirror.jpg", "caption": "Red Tufted Wall Mirror", "video_link": "" },
-    { "image": "/images/uploads/gallery-floating-tv-console.jpg", "caption": "Floating TV Console", "video_link": "" }
+    {
+      "image": "/images/uploads/gallery-brown-leather-sofa.jpg",
+      "caption": "Brown Leather Sofa Set",
+      "video_link": ""
+    },
+    {
+      "image": "/images/uploads/gallery-bw-tv-console.jpg",
+      "caption": "Black & White TV Console",
+      "video_link": ""
+    },
+    {
+      "image": "/images/uploads/gallery-grey-kitchen.jpg",
+      "caption": "Grey Kitchen Cabinet",
+      "video_link": ""
+    },
+    {
+      "image": "/images/uploads/gallery-mirror-wardrobe.jpg",
+      "caption": "Lighted Mirror Wardrobe",
+      "video_link": ""
+    },
+    {
+      "image": "/images/uploads/gallery-office-desk.jpg",
+      "caption": "Executive Office Desk",
+      "video_link": ""
+    },
+    {
+      "image": "/images/uploads/gallery-yellow-kitchen.jpg",
+      "caption": "Yellow Kitchen Cabinet",
+      "video_link": ""
+    },
+    {
+      "image": "/images/uploads/gallery-green-sofa.jpg",
+      "caption": "Emerald Tufted Sofa Set",
+      "video_link": ""
+    },
+    {
+      "image": "/images/uploads/gallery-grey-sofa-gold-legs.jpg",
+      "caption": "Grey Sofa Set, Gold Legs",
+      "video_link": ""
+    },
+    {
+      "image": "/images/uploads/gallery-white-marble-tv-console.jpg",
+      "caption": "White Marble-Look TV Console",
+      "video_link": ""
+    },
+    {
+      "image": "/images/uploads/gallery-beige-tv-console.jpg",
+      "caption": "Beige TV Console",
+      "video_link": ""
+    },
+    {
+      "image": "/images/uploads/gallery-red-mirror.jpg",
+      "caption": "Red Tufted Wall Mirror",
+      "video_link": ""
+    },
+    {
+      "image": "/images/uploads/gallery-floating-tv-console.jpg",
+      "caption": "Floating TV Console",
+      "video_link": ""
+    },
+    {
+      "image": "/images/uploads/gallery-tv-sofa-set-1790244240003.jpg",
+      "caption": "TV sofa set",
+      "category": "TV Consoles",
+      "video_link": ""
+    }
   ]
 }
