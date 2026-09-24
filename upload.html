@@ -65,7 +65,7 @@ function resizeImage(file, maxDim) {
     var img = new Image();
     var reader = new FileReader();
     reader.onload = function(e){ img.src = e.target.result; };
-    reader.onerror = reject;
+    reader.onerror = function(){ reject(new Error('Could not read the photo file.')); };
     img.onload = function(){
       var w = img.width, h = img.height;
       if (w > h && w > maxDim) { h = Math.round(h * maxDim / w); w = maxDim; }
@@ -76,7 +76,7 @@ function resizeImage(file, maxDim) {
       var dataUrl = canvas.toDataURL('image/jpeg', 0.82);
       resolve(dataUrl.split(',')[1]); // strip "data:image/jpeg;base64," prefix
     };
-    img.onerror = reject;
+    img.onerror = function(){ reject(new Error('Could not process the photo image.')); };
     reader.readAsDataURL(file);
   });
 }
@@ -116,8 +116,13 @@ function submitUpload(){
         videoLink: videoLink
       })
     });
-  }).then(function(res){ return res.json().then(function(data){ return {ok: res.ok, data: data}; }); })
-    .then(function(result){
+  }).then(function(res){
+    return res.text().then(function(text){
+      var data;
+      try { data = JSON.parse(text); } catch(e) { data = { error: 'Server returned: ' + text.slice(0,200) }; }
+      return {ok: res.ok, status: res.status, data: data};
+    });
+  }).then(function(result){
       btn.disabled = false;
       if (result.ok) {
         showStatus('✅ ' + result.data.message, true);
@@ -126,11 +131,11 @@ function submitUpload(){
         fileInput.value = '';
         document.getElementById('preview').style.display = 'none';
       } else {
-        showStatus('❌ ' + (result.data.error || 'Upload failed. Check your password and try again.'), false);
+        showStatus('❌ (' + result.status + ') ' + (result.data.error || 'Upload failed.'), false);
       }
     }).catch(function(err){
       btn.disabled = false;
-      showStatus('❌ Something went wrong: ' + err.message, false);
+      showStatus('❌ Something went wrong: ' + (err && err.message ? err.message : String(err)), false);
     });
 }
 </script>
