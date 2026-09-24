@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add New Product — Perfect Furniture</title>
+<style>
+:root{--gold:#d4af37;--dark:#090909;--dark2:#151515;--white:#fff;--muted:#c9c9c9}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--dark);color:var(--white);padding:24px 18px 60px;max-width:480px;margin:0 auto}
+h1{color:var(--gold);font-size:22px;margin-bottom:6px}
+p.sub{color:var(--muted);font-size:13px;margin-bottom:26px}
+label{display:block;font-size:13px;color:var(--gold);margin:18px 0 6px;font-weight:bold}
+input[type=text],input[type=password],select{width:100%;padding:13px;border-radius:8px;border:1px solid #333;background:#151515;color:#fff;font-size:15px}
+input[type=file]{width:100%;padding:12px;border-radius:8px;border:1px dashed #444;background:#111;color:var(--muted);font-size:13px}
+button{width:100%;margin-top:26px;padding:15px;border-radius:8px;border:none;background:var(--gold);color:#090909;font-weight:bold;font-size:15px;cursor:pointer}
+button:disabled{opacity:.5}
+#preview{margin-top:14px;max-width:100%;border-radius:8px;display:none}
+#status{margin-top:18px;padding:12px;border-radius:8px;font-size:14px;display:none}
+#status.ok{background:rgba(37,211,102,.15);border:1px solid #25d366;color:#8fedb0}
+#status.err{background:rgba(255,80,80,.12);border:1px solid #ff5050;color:#ff9d9d}
+</style>
+</head>
+<body>
+<h1>Add New Product Photo</h1>
+<p class="sub">Private page for Perfect Furniture & Dominion Showroom. Photos added here appear on the website automatically, sorted into their category.</p>
+
+<label>Access Password</label>
+<input type="password" id="password" placeholder="Enter the access password">
+
+<label>Photo</label>
+<input type="file" id="photo" accept="image/*">
+<img id="preview">
+
+<label>Product Name</label>
+<input type="text" id="caption" placeholder="e.g. Grey Velvet Sofa Set">
+
+<label>Category</label>
+<select id="category">
+<option value="Sofa Sets">Sofa Sets</option>
+<option value="Beds & Bedroom">Beds & Bedroom</option>
+<option value="TV Consoles">TV Consoles</option>
+<option value="Dining Sets">Dining Sets</option>
+<option value="Office Furniture">Office Furniture</option>
+<option value="Kitchen & Storage">Kitchen & Storage</option>
+</select>
+
+<label>Video Link (optional — paste a YouTube or Facebook link)</label>
+<input type="text" id="videoLink" placeholder="https://...">
+
+<button id="submitBtn" onclick="submitUpload()">Upload Product</button>
+<div id="status"></div>
+
+<script>
+document.getElementById('photo').addEventListener('change', function(e){
+  var file = e.target.files[0];
+  if(!file) return;
+  var img = document.getElementById('preview');
+  img.src = URL.createObjectURL(file);
+  img.style.display = 'block';
+});
+
+function resizeImage(file, maxDim) {
+  return new Promise(function(resolve, reject){
+    var img = new Image();
+    var reader = new FileReader();
+    reader.onload = function(e){ img.src = e.target.result; };
+    reader.onerror = reject;
+    img.onload = function(){
+      var w = img.width, h = img.height;
+      if (w > h && w > maxDim) { h = Math.round(h * maxDim / w); w = maxDim; }
+      else if (h > maxDim) { w = Math.round(w * maxDim / h); h = maxDim; }
+      var canvas = document.createElement('canvas');
+      canvas.width = w; canvas.height = h;
+      canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+      var dataUrl = canvas.toDataURL('image/jpeg', 0.82);
+      resolve(dataUrl.split(',')[1]); // strip "data:image/jpeg;base64," prefix
+    };
+    img.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+function showStatus(msg, ok){
+  var el = document.getElementById('status');
+  el.textContent = msg;
+  el.className = ok ? 'ok' : 'err';
+  el.style.display = 'block';
+}
+
+function submitUpload(){
+  var password = document.getElementById('password').value.trim();
+  var fileInput = document.getElementById('photo');
+  var caption = document.getElementById('caption').value.trim();
+  var category = document.getElementById('category').value;
+  var videoLink = document.getElementById('videoLink').value.trim();
+  var btn = document.getElementById('submitBtn');
+
+  if (!password) { showStatus('Please enter the access password.', false); return; }
+  if (!fileInput.files[0]) { showStatus('Please choose a photo.', false); return; }
+  if (!caption) { showStatus('Please enter a product name.', false); return; }
+
+  btn.disabled = true;
+  showStatus('Uploading... please wait, this can take up to a minute.', true);
+
+  resizeImage(fileInput.files[0], 1600).then(function(base64){
+    return fetch('/.netlify/functions/upload', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        password: password,
+        imageBase64: base64,
+        mimeType: 'image/jpeg',
+        caption: caption,
+        category: category,
+        videoLink: videoLink
+      })
+    });
+  }).then(function(res){ return res.json().then(function(data){ return {ok: res.ok, data: data}; }); })
+    .then(function(result){
+      btn.disabled = false;
+      if (result.ok) {
+        showStatus('✅ ' + result.data.message, true);
+        document.getElementById('caption').value = '';
+        document.getElementById('videoLink').value = '';
+        fileInput.value = '';
+        document.getElementById('preview').style.display = 'none';
+      } else {
+        showStatus('❌ ' + (result.data.error || 'Upload failed. Check your password and try again.'), false);
+      }
+    }).catch(function(err){
+      btn.disabled = false;
+      showStatus('❌ Something went wrong: ' + err.message, false);
+    });
+}
+</script>
+</body>
+</html>
